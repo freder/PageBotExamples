@@ -27,13 +27,13 @@ from pagebot.toolbox.loremipsum import  loremIpsum
 # Template for the export path, allowing to include context name
 W, H = pt(800), pt(600)
 FILENAME = path2FileName(__file__)
-FONTNAME = 'Bungee-Regular'
+FONTNAME = 'Arial'
 SQ = 50
 
 def draw(contextName):
     context = getContext(contextName)
-    exportPath = '%s/%s-%s.pdf' % (EXPORT, FILENAME, doc.context.name)
     doc = Document(w=W, h=H, context=context)
+    exportPath = '%s/%s-%s.pdf' % (EXPORT, FILENAME, doc.context.name)
     # Gets the first page from te document.
     page = doc[1]
     page.name = 'First page'
@@ -56,5 +56,8 @@ def draw(contextName):
 
     doc.export(exportPath)
 
-for contextName in ('DrawBot', 'Flat'):
+for contextName in [
+    # 'DrawBot', 
+    'Flat'
+]:
     draw(contextName)
